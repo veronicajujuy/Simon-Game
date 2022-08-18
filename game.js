@@ -2,14 +2,14 @@ let buttonColours = ["red", "blue", "green", "yellow"]
 let gamePattern = []
 let userChoice = []
 let level = 0
-let start = false
+let started = false
 
 
-$("body").keypress(function(e){
-    if (!start) {
+$(document).keypress(function(){
+    if (!started) {
     nextSequence()
     $("h1").text("Level "+ level)
-    start = true}
+    started = true}
 })
 
 
@@ -56,9 +56,8 @@ function animatePress(currentColor){
 }
 
 function checkAnswer(currentLevel){
-     console.log(currentLevel)
+    
     if (gamePattern[currentLevel] === userChoice[currentLevel]){
-        console.log("success",userChoice[currentLevel],gamePattern[currentLevel])
         $("h1").text("Level "+ level)
         if (userChoice.length === gamePattern.length){
             setTimeout(function () {
@@ -66,8 +65,22 @@ function checkAnswer(currentLevel){
             }, 1000);
           }
     } else {
-        console.log("wrong",userChoice[currentLevel],gamePattern[currentLevel])
         playSound("wrong")
+        $("body").addClass("game-over")
+        $("h1").text("Game-Over")
+        setTimeout(function(){
+            $("body").removeClass("game-over")
+            startOver()
+        },1000)
+        
     }
     
+}
+
+function startOver() {
+    $("h1").text("Press A Key to Start")
+    let gamePattern = []
+    let level = 0
+    let started = false
+    console.log(started)
 }
