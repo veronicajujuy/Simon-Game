@@ -5,4 +5,4 @@ This is a game develop in js, css and html, using JQuery. The purpose of the gam
 - ✨Vero ✨
 
 
-![Simon-game](/images/simon-game.png)]
+![Simon-game](/images/simon-game.png)
